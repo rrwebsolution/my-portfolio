@@ -35,13 +35,15 @@ export function Reveal({ children, direction = "left", className = "" }: RevealP
   const hiddenTransform = direction === "left" ? "-translate-x-20" : "translate-x-20"
 
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "translate-x-0 opacity-100" : `${hiddenTransform} opacity-0`
-      } ${className}`}
-    >
-      {children}
+    <div className="overflow-x-hidden">
+      <div
+        ref={ref}
+        className={`transition-all duration-700 ease-out ${
+          visible ? "translate-x-0 opacity-100" : `${hiddenTransform} opacity-0`
+        } ${className}`}
+      >
+        {children}
+      </div>
     </div>
   )
 }

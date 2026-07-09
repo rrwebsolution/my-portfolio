@@ -6,7 +6,7 @@ export const profile = {
   location: "Santa Ana, Tagoloan, Misamis Oriental",
   phone: "+63 935 855 4398",
   email: "ryanjayreyes047@gmail.com",
-  linkedin: "https://www.linkedin.com/in/ryan-reyes-a45a9a277/",
+  linkedin: "https://www.linkedin.com/in/ryan-jay-reyes-5490bb421",
   facebook: "https://www.facebook.com/ryanjaytagolimotreyes",
   languages: ["English", "Tagalog", "Bisaya"],
 }

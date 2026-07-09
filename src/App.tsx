@@ -13,7 +13,7 @@ import { PreviewBanner } from "@/components/PreviewBanner"
 function App() {
   return (
     <ResumeProvider>
-    <div className="relative min-h-svh overflow-x-hidden bg-background text-foreground">
+    <div className="relative min-h-svh bg-background text-foreground">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="animate-aurora-1 absolute -top-32 -left-24 size-[36rem] rounded-full bg-primary/25 blur-3xl" />
         <div className="animate-aurora-2 absolute top-1/3 -right-20 size-[32rem] rounded-full bg-chart-2/20 blur-3xl" />
