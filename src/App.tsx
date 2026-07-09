@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer"
 import { Reveal } from "@/components/Reveal"
 import { ResumeProvider } from "@/context/ResumeContext"
 import { PreviewBanner } from "@/components/PreviewBanner"
+import { ScrollToTop } from "@/components/ScrollToTop"
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         </Reveal>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
     </ResumeProvider>
   )

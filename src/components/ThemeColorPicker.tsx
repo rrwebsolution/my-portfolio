@@ -6,6 +6,7 @@ const THEMES = [
   { key: "emerald", label: "Emerald", swatch: "oklch(0.596 0.145 163.225)" },
   { key: "violet", label: "Violet", swatch: "oklch(0.541 0.216 293.756)" },
   { key: "rose", label: "Rose", swatch: "oklch(0.586 0.216 17.917)" },
+  { key: "black", label: "Black", swatch: "oklch(0.19 0 0)" },
 ] as const
 
 type ThemeKey = (typeof THEMES)[number]["key"]

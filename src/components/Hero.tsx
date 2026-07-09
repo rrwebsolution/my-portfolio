@@ -2,6 +2,7 @@ import { Download, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CvUploadDialog } from "@/components/CvUploadDialog"
 import { useResume } from "@/context/ResumeContext"
+import { heroBio, portfolioStats } from "@/data/resume"
 import profilePhoto from "@/assets/photos/profile-formal.jpg"
 
 export function Hero() {
@@ -46,10 +47,54 @@ export function Hero() {
         </h1>
         
         {/* Profile Summary */}
-        <p className="mx-auto max-w-2xl text-balance text-muted-foreground text-base sm:text-lg sm:leading-relaxed">
-          {profile.summary}
-        </p>
+        {isCustom ? (
+          <p className="mx-auto max-w-2xl text-balance text-muted-foreground text-base sm:text-lg sm:leading-relaxed">
+            {profile.summary}
+          </p>
+        ) : (
+          <div className="mx-auto max-w-2xl space-y-4 text-left text-muted-foreground leading-relaxed">
+            <p>{heroBio.intro}</p>
+
+            <div>
+              <p className="font-semibold text-foreground">{heroBio.techStackHeading}</p>
+              <ul className="mt-1.5 list-disc space-y-1 pl-5">
+                {heroBio.techStack.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-semibold text-foreground">{heroBio.projectsHeading}</p>
+              <ul className="mt-1.5 list-disc space-y-1 pl-5">
+                {heroBio.projects.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {heroBio.closing.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        )}
       </div>
+
+      {!isCustom && (
+        <div className="grid w-full max-w-3xl gap-3 sm:grid-cols-3">
+          {portfolioStats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-border/50 bg-background/55 px-4 py-3 shadow-xs backdrop-blur-xs"
+            >
+              <p className="text-sm font-bold text-foreground">{stat.value}</p>
+              <p className="mt-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Call to Actions with tactile micro-interactions */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">

@@ -1,8 +1,25 @@
 import { Globe2, MapPin } from "lucide-react"
 import { useResume } from "@/context/ResumeContext"
+import { Reveal } from "@/components/Reveal"
+import { hobbies } from "@/data/resume"
 import graduationPhoto from "@/assets/photos/profile-graduation.jpg"
 import deskPhoto1 from "@/assets/photos/profile-desk-1.png"
 import deskPhoto2 from "@/assets/photos/profile-desk-2.png"
+import hobbyCinema from "@/assets/photos/hobby-cinema.jpg"
+import hobbyVintageCar from "@/assets/photos/hobby-vintage-car.jpg"
+import hobbyArch from "@/assets/photos/hobby-arch.jpg"
+import hobbySantorini from "@/assets/photos/hobby-santorini.jpg"
+import hobbyBalloons from "@/assets/photos/hobby-balloons.jpg"
+import hobbyMountains from "@/assets/photos/hobby-mountains.jpg"
+
+const galleryPhotos = [
+  { src: hobbyCinema, alt: "Ryan Jay Reyes at a cinema event" },
+  { src: hobbyVintageCar, alt: "Ryan Jay Reyes beside a vintage car" },
+  { src: hobbyArch, alt: "Ryan Jay Reyes at a scenic viewpoint" },
+  { src: hobbySantorini, alt: "Ryan Jay Reyes at the Santorini-themed steps" },
+  { src: hobbyBalloons, alt: "Ryan Jay Reyes at a celebration" },
+  { src: hobbyMountains, alt: "Ryan Jay Reyes with a mountain view" },
+]
 
 export function About() {
   const { data, isCustom } = useResume()
@@ -124,6 +141,42 @@ export function About() {
           </div>
 
         </div>
+
+        {/* Beyond the code: photo gallery + hobbies */}
+        {!isCustom && (
+          <div className="mt-16 grid gap-10 lg:grid-cols-[1fr_320px]">
+            <Reveal direction="left">
+              <h3 className="font-heading text-lg font-bold tracking-tight">Beyond the Code</h3>
+              <p className="mt-0.5 text-xs text-muted-foreground">A few moments outside of work.</p>
+              <div className="mt-4 grid grid-cols-2 gap-3 overflow-hidden sm:grid-cols-3 sm:gap-4">
+                {galleryPhotos.map((photo) => (
+                  <div key={photo.src} className="overflow-hidden rounded-xl border border-border/40 shadow-sm">
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="block aspect-[3/4] w-full min-w-0 object-cover transition-transform duration-300 hover:scale-[1.03]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal direction="right" className="space-y-6 rounded-2xl border border-border/40 bg-background/40 p-6 shadow-xs backdrop-blur-xs">
+              <div>
+                <h3 className="font-heading text-lg font-bold tracking-tight">Hobbies & Interests</h3>
+                <p className="mt-0.5 text-xs text-muted-foreground">What I enjoy outside of work.</p>
+              </div>
+              <ul className="space-y-3">
+                {hobbies.map((hobby) => (
+                  <li key={hobby.label} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <span className="text-lg leading-none">{hobby.emoji}</span>
+                    <span>{hobby.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        )}
       </div>
     </section>
   )
