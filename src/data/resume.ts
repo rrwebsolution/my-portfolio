@@ -21,52 +21,82 @@ export const personalDetails = {
 
 export const skills = [
   {
-    category: "Programming Languages",
+    category: "Languages",
     items: ["PHP", "JavaScript", "TypeScript"],
   },
   {
-    category: "Web Development",
-    items: ["React", "Vite", "HTML", "CSS", "Tailwind CSS"],
+    category: "Backend & APIs",
+    items: [
+      "Laravel",
+      "Eloquent ORM",
+      "RESTful API Development",
+      "Authentication",
+      "CRUD Architecture",
+      "API Integration",
+    ],
   },
   {
-    category: "Database Management",
-    items: ["MySQL", "SQL Server"],
+    category: "Frontend",
+    items: ["React", "Vite", "Tailwind CSS", "shadcn/ui", "HTML5", "CSS3", "Responsive Design"],
   },
   {
-    category: "Tools & Technologies",
-    items: ["Git", "Composer", "npm"],
+    category: "Databases",
+    items: ["MySQL", "PostgreSQL", "SQL Server", "Schema Design", "Reporting Queries"],
   },
   {
-    category: "Frameworks & Libraries",
-    items: ["Laravel", "React", "AJAX"],
+    category: "Tools & Practices",
+    items: ["Git", "GitHub", "Composer", "npm", "System Testing", "Technical Documentation"],
   },
 ]
 
 export const experience = [
   {
-    title: "eDTR — Electronic Daily Time Record System",
+    title: "Information Systems Analyst III",
+    company: "Department of Information and Communications Technology (DICT)",
+    duration: "June 2024 – Present",
+    stack: ["System Deployment", "Technical Support", "System Testing", "Technical Documentation"],
+    responsibilities: [
+      "Provide technical support for the implementation and operation of government information systems deployed to local government units (LGUs) nationwide.",
+      "Configure, deploy, and troubleshoot systems for LGU end users, resolving issues spanning application errors, database inconsistencies, and environment configuration.",
+      "Conduct system orientations and hands-on technical training for government staff.",
+      "Perform system testing and issue identification ahead of rollout, documenting defects and troubleshooting references adopted by the support team.",
+      "Translate stakeholder requirements into implementation specifications, coordinating between LGU offices and technical teams through deployment.",
+    ],
+    achievements: [
+      "Increased user adoption and reduced repeat support requests through hands-on training.",
+      "Authored troubleshooting references now used as the support team's standard documentation.",
+    ],
+  },
+  {
+    title: "Web Developer (Project Basis) — eDTR System",
     company: "Department of Information and Communications Technology (DICT–Misamis Oriental)",
-    duration: "January 22, 2024 – May 2024",
+    duration: "January 2024 – May 2024",
     stack: ["React", "Vite", "TypeScript", "Laravel"],
     responsibilities: [
-      "Designed and implemented the database schema for storing attendance records and designed the frontend.",
-      "Developed RESTful APIs using Laravel to manage attendance data.",
+      "Engineered the backend and frontend end-to-end with Laravel and React TypeScript, delivering the platform from database schema to production within a four-month engagement.",
+      "Architected and implemented the relational database schema supporting attendance records, generated reports, and analytics.",
+      "Developed RESTful APIs using Laravel to manage attendance data retrieval, filtering, and report generation.",
+      "Integrated interactive dashboards and data visualizations, replacing a manual attendance-tracking process.",
     ],
-    achievements: ["Successfully reduced the time required for attendance tracking."],
+    achievements: [
+      "Successfully reduced the time required for attendance tracking.",
+      "Delivered a responsive, cross-browser compatible interface used by government offices.",
+    ],
   },
 ]
 
 export const projects = [
   {
-    name: "AtHomes",
-    description: "Property management dashboard for tracking homes, tenants, and billing.",
-    url: "https://www.athomesdashboard.com/",
+    name: "Gingoog City Government Employees Association",
+    description:
+      "Gingoog City Government Employees Association (GCGEA) is an organization that supports and serves employees of the City Government of Gingoog by facilitating membership services, contributions, loans, financial assistance, and employee benefits. The association promotes efficient member services, financial accountability, and the welfare of its members through organized programs and services.",
+    url: "https://gcgea-mlbms.vercel.app/",
     stack: ["React", "Vite", "TypeScript", "Tailwind CSS", "Laravel"],
     category: "Client System",
     role: "Full-stack developer",
     highlights: [
-      "Built a responsive dashboard for property and tenant records.",
-      "Structured billing workflows for easier day-to-day tracking.",
+      "Built a membership management dashboard for contributions, loans, and financial assistance records.",
+      "Structured member benefits and financial tracking workflows for day-to-day association operations.",
     ],
   },
   {

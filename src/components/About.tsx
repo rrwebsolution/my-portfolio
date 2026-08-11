@@ -1,4 +1,4 @@
-import { Globe2, MapPin } from "lucide-react"
+import { Code2, Database, Globe2, LayoutTemplate, MapPin, Server, Wrench } from "lucide-react"
 import { useResume } from "@/context/ResumeContext"
 import { Reveal } from "@/components/Reveal"
 import { hobbies } from "@/data/resume"
@@ -20,6 +20,14 @@ const galleryPhotos = [
   { src: hobbyBalloons, alt: "Ryan Jay Reyes at a celebration" },
   { src: hobbyMountains, alt: "Ryan Jay Reyes with a mountain view" },
 ]
+
+const categoryIcons: Record<string, typeof Code2> = {
+  "Languages": Code2,
+  "Backend & APIs": Server,
+  "Frontend": LayoutTemplate,
+  "Databases": Database,
+  "Tools & Practices": Wrench,
+}
 
 export function About() {
   const { data, isCustom } = useResume()
@@ -118,10 +126,14 @@ export function About() {
             </div>
             
             <div className="space-y-5">
-              {skills.map((group) => (
+              {skills.map((group) => {
+                const Icon = group.category ? categoryIcons[group.category] : undefined
+
+                return (
                 <div key={group.category || group.items.join(",")} className="space-y-2">
                   {group.category && (
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {Icon && <Icon className="size-3.5 text-primary" />}
                       {group.category}
                     </p>
                   )}
@@ -136,7 +148,8 @@ export function About() {
                     ))}
                   </div>
                 </div>
-              ))}
+                )
+              })}
             </div>
           </div>
 
