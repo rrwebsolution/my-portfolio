@@ -37,7 +37,7 @@ export function Projects() {
         <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-2">
             <p className="text-xs font-semibold tracking-wider text-primary uppercase">Projects</p>
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Client work</h2>
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Freelance / Independent Projects</h2>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
               A quick look at systems I have shipped, the stack behind them, and the problems they help solve.
             </p>
