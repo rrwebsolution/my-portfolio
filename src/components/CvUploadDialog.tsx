@@ -84,7 +84,7 @@ export function CvUploadDialog() {
             onClick={close}
           />
 
-          <div className="relative w-full max-w-md rounded-2xl border border-border/50 bg-card p-6 shadow-2xl">
+          <div className="relative w-full rounded-2xl border border-border/50 bg-card p-6 shadow-2xl">
             <button
               type="button"
               onClick={close}

@@ -27,21 +27,17 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "border-b border-border/40 bg-background/80 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+      className={`sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md transition-shadow duration-300 ${
+        scrolled ? "shadow-md shadow-black/5" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        {/* Logo with subtle gradient hover effect */}
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+        {/* Logo */}
         <a
           href="#top"
-          className="group text-lg font-bold tracking-tight text-foreground transition-colors"
+          className="text-lg font-extrabold tracking-tight text-foreground transition-opacity hover:opacity-80"
         >
-          <span className="bg-gradient-to-r from-foreground via-foreground/90 to-muted-foreground bg-clip-text text-transparent group-hover:from-primary group-hover:to-primary/80 transition-all duration-300">
-            Ryan Jay Reyes
-          </span>
+          Ryan Jay Reyes
         </a>
 
         {/* Desktop Navigation */}
@@ -50,17 +46,16 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground"
+              className="rounded-full px-3.5 py-2 text-sm font-semibold text-foreground/80 transition-all duration-200 hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               {link.label}
             </a>
           ))}
-          <div className="ml-4 flex items-center gap-4 border-l border-border/50 pl-4">
+          <div className="ml-4 flex items-center gap-4 border-l border-border pl-4">
             <ThemeColorPicker />
-            {/* Using standard Radix 'asChild' to correctly render a link inside a button style */}
             <Button
               size="sm"
-              className="rounded-full shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
+              className="rounded-full bg-primary text-primary-foreground shadow-sm hover:opacity-90 hover:shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
               asChild
             >
               <a href="#contact">Get in touch</a>
@@ -72,7 +67,7 @@ export function Navbar() {
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full md:hidden hover:bg-muted"
+          className="rounded-full text-foreground md:hidden hover:bg-muted"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -86,21 +81,26 @@ export function Navbar() {
 
       {/* Mobile Navigation Dropdown */}
       {open && (
-        <div className="absolute left-0 right-0 top-full border-b border-border/40 bg-background/95 backdrop-blur-lg px-6 py-5 shadow-lg md:hidden animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="absolute left-0 right-0 top-full border-t border-border bg-background px-6 py-5 shadow-lg md:hidden animate-in fade-in slide-in-from-top-4 duration-200">
           <nav className="flex flex-col gap-1.5">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition-all hover:bg-muted hover:text-foreground active:scale-[0.98]"
+                className="flex items-center rounded-xl px-4 py-3 text-sm font-semibold text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-[0.98]"
               >
                 {link.label}
               </a>
             ))}
-            <div className="mt-4 flex items-center justify-between border-t border-border/50 pt-4">
+            <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
               <ThemeColorPicker />
-              <Button size="default" className="rounded-xl" asChild onClick={() => setOpen(false)}>
+              <Button
+                size="default"
+                className="rounded-xl bg-primary text-primary-foreground hover:opacity-90"
+                asChild
+                onClick={() => setOpen(false)}
+              >
                 <a href="#contact">Get in touch</a>
               </Button>
             </div>

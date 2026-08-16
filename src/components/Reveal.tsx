@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 
 type RevealProps = {
   children: ReactNode
-  direction?: "left" | "right"
+  direction?: "left" | "right" | "up"
   className?: string
 }
 
@@ -32,14 +32,18 @@ export function Reveal({ children, direction = "left", className = "" }: RevealP
     return () => observer.disconnect()
   }, [])
 
-  const hiddenTransform = direction === "left" ? "-translate-x-20" : "translate-x-20"
+  const hiddenTransform = {
+    left: "-translate-x-20",
+    right: "translate-x-20",
+    up: "translate-y-20",
+  }[direction]
 
   return (
     <div className="overflow-x-hidden">
       <div
         ref={ref}
         className={`transition-all duration-700 ease-out ${
-          visible ? "translate-x-0 opacity-100" : `${hiddenTransform} opacity-0`
+          visible ? "translate-x-0 translate-y-0 opacity-100" : `${hiddenTransform} opacity-0`
         } ${className}`}
       >
         {children}
