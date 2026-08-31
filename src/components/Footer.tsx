@@ -1,9 +1,13 @@
-import { ArrowUp } from "lucide-react"
+import { ArrowUp, FileText } from "lucide-react"
+import { useLocation } from "react-router-dom"
 import { useResume } from "@/context/ResumeContext"
 
 export function Footer() {
   const { data } = useResume()
   const { profile } = data
+  const location = useLocation()
+  const isHome = location.pathname === "/"
+  const linkHref = (id: string) => (isHome ? `#${id}` : `/#${id}`)
 
   const initials = profile.name
     .split(" ")
@@ -40,21 +44,35 @@ export function Footer() {
 
           {/* Center: Quick Navigation Anchor Links */}
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
-            <a href="#top" className="transition-colors hover:text-primary">
+            <a href={isHome ? "#top" : "/"} className="transition-colors hover:text-primary">
               Home
             </a>
-            <a href="#about" className="transition-colors hover:text-primary">
+            <a href={linkHref("about")} className="transition-colors hover:text-primary">
               About
             </a>
-            <a href="#experience" className="transition-colors hover:text-primary">
+            <a href={linkHref("experience")} className="transition-colors hover:text-primary">
               Experience
             </a>
-            <a href="#projects" className="transition-colors hover:text-primary">
+            <a href={linkHref("projects")} className="transition-colors hover:text-primary">
               Projects
             </a>
-            <a href="#contact" className="transition-colors hover:text-primary">
+            <a href={linkHref("services")} className="transition-colors hover:text-primary">
+              Services
+            </a>
+            <a href={linkHref("contact")} className="transition-colors hover:text-primary">
               Contact
             </a>
+            {profile.resumeUrl && (
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 transition-colors hover:text-primary"
+              >
+                <FileText className="size-3" />
+                Resume
+              </a>
+            )}
           </nav>
 
           {/* Right: Available for Work Status Pill */}
@@ -90,7 +108,7 @@ export function Footer() {
 
           {/* Built With Credits */}
           <div className="flex items-center gap-1.5 font-medium">
-            <span>Built with precision using</span>
+            <span>Built with modern web technologies —</span>
             <span className="inline-flex items-center rounded-md border border-border/60 bg-card/40 px-1.5 py-0.5 text-[10px] font-semibold text-foreground">
               React
             </span>

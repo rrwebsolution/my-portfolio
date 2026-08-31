@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react"
-import { 
-  ArrowUpRight,  
-  Filter, 
-  FolderGit2, 
-  Layers, 
+import { Link } from "react-router-dom"
+import {
+  ArrowUpRight,
+  Filter,
+  FolderGit2,
+  Layers,
   UserRound,
-  RotateCcw
+  RotateCcw,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useResume } from "@/context/ResumeContext"
@@ -112,6 +113,7 @@ export function Projects() {
             const role = "role" in project && typeof project.role === "string" ? project.role : null
             const highlights =
               "highlights" in project && Array.isArray(project.highlights) ? project.highlights : []
+            const slug = "slug" in project && typeof project.slug === "string" ? project.slug : null
 
             return (
               <article
@@ -185,20 +187,32 @@ export function Projects() {
                     ))}
                   </div>
 
-                  {/* Live Link Button */}
-                  {project.url && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="group/btn w-full rounded-xl border-border/70 bg-background/60 font-semibold backdrop-blur-xs transition-all duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
-                      asChild
-                    >
-                      <a href={project.url} target="_blank" rel="noreferrer">
-                        <span>Visit site</span>
-                        <ArrowUpRight className="size-4 ml-1.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                      </a>
-                    </Button>
-                  )}
+                  {/* Live Link & Case Study Buttons */}
+                  <div className="flex gap-2">
+                    {slug && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 rounded-xl border-border/70 bg-background/60 font-semibold backdrop-blur-xs transition-all duration-300 hover:border-primary/60 hover:text-primary active:scale-[0.98]"
+                        asChild
+                      >
+                        <Link to={`/projects/${slug}`}>View Details</Link>
+                      </Button>
+                    )}
+                    {project.url && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="group/btn flex-1 rounded-xl border-border/70 bg-background/60 font-semibold backdrop-blur-xs transition-all duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
+                        asChild
+                      >
+                        <a href={project.url} target="_blank" rel="noreferrer">
+                          <span>Live Demo</span>
+                          <ArrowUpRight className="size-4 ml-1.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </div>
 
               </article>

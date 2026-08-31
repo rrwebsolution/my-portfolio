@@ -1,9 +1,20 @@
-import { ArrowRight, Code2, Download, FolderGit2, Mail, Sparkles } from "lucide-react"
+import { ArrowRight, Code2, FileText, FolderGit2, Mail, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CvUploadDialog } from "@/components/CvUploadDialog"
 import { useResume } from "@/context/ResumeContext"
 import { heroBio, portfolioStats } from "@/data/resume"
 import profilePhoto from "@/assets/photos/profile-formal.jpg"
+
+const heroTechBadges = [
+  "Laravel",
+  "React",
+  "Next.js",
+  "Vue.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "MySQL",
+  "PostgreSQL",
+]
 
 export function Hero() {
   const { data, isCustom } = useResume()
@@ -50,6 +61,15 @@ export function Hero() {
           </span>
           <span className="text-muted-foreground font-semibold">Available</span>
         </div>
+      </div>
+
+      {/* Availability badge */}
+      <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 shadow-2xs backdrop-blur-xs">
+        <span className="relative flex size-2">
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+        </span>
+        <span>Available for Remote &amp; Project-Based Opportunities</span>
       </div>
 
       {/* 2. HEADLINE & ROLES */}
@@ -157,9 +177,9 @@ export function Hero() {
           className="group w-full sm:w-auto rounded-full bg-primary px-7 text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/35 hover:-translate-y-0.5 active:translate-y-0"
           asChild
         >
-          <a href="#contact">
-            <Mail className="size-4 mr-2 transition-transform duration-300 group-hover:scale-110" />
-            <span>Contact Me</span>
+          <a href="#projects">
+            <FolderGit2 className="size-4 mr-2 transition-transform duration-300 group-hover:scale-110" />
+            <span>View My Projects</span>
             <ArrowRight className="size-4 ml-1.5 opacity-70 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </Button>
@@ -170,11 +190,37 @@ export function Hero() {
           className="group w-full sm:w-auto rounded-full border-border/80 bg-background/50 px-7 backdrop-blur-xs transition-all duration-300 hover:border-primary/40 hover:bg-muted/80 hover:-translate-y-0.5 active:translate-y-0"
           asChild
         >
-          <a href="#experience">
-            <Download className="size-4 mr-2 transition-transform duration-300 group-hover:-translate-y-0.5" />
-            <span>View Experience</span>
+          <a href="#contact">
+            <Mail className="size-4 mr-2 transition-transform duration-300 group-hover:scale-110" />
+            <span>Contact Me</span>
           </a>
         </Button>
+
+        {profile.resumeUrl && (
+          <Button
+            size="lg"
+            variant="ghost"
+            className="group w-full sm:w-auto rounded-full px-5 text-foreground/80 transition-all duration-300 hover:bg-muted/80 hover:text-foreground"
+            asChild
+          >
+            <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
+              <FileText className="size-4 mr-2 transition-transform duration-300 group-hover:-translate-y-0.5" />
+              <span>View Resume</span>
+            </a>
+          </Button>
+        )}
+      </div>
+
+      {/* 5. TECH BADGES */}
+      <div className="flex flex-wrap items-center justify-center gap-1.5">
+        {heroTechBadges.map((tech) => (
+          <span
+            key={tech}
+            className="inline-flex items-center rounded-full border border-border/60 bg-card/40 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur-xs"
+          >
+            {tech}
+          </span>
+        ))}
       </div>
 
       <CvUploadDialog />
