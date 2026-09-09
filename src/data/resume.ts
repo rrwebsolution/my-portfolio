@@ -2,7 +2,7 @@ export const profile = {
   name: "Ryan Jay T. Reyes",
   title: "Information Systems Analyst III | Web Developer | Full Stack Developer",
   summary:
-    "Information Systems Analyst and Web Developer with over 2 years of experience in government information systems, full-stack web application development, database management, system implementation, and technical support, plus 5 years of experience delivering freelance, independent web-based projects. Led end-to-end development of the Data Monitoring Tool (DMT-LGU), a Laravel and React platform now used by DICT to monitor eLGU systems nationwide.",
+    "Information Systems Analyst and Web Developer with over 2 years of experience in government information systems, full-stack web application development, database management, system implementation, and technical support, plus 5 years of experience delivering freelance, independent web-based projects. Led end-to-end development of the Data Monitoring Tool (DMT-LGU), a Python Django and React platform now used by DICT to monitor eLGU systems nationwide.",
   location: "Santa Ana, Tagoloan, Misamis Oriental",
   phone: "+63 935 855 4398",
   email: "rrwebsolutions1998@gmail.com",
@@ -30,6 +30,7 @@ export const skills = [
     category: "Backend & APIs",
     items: [
       "Laravel",
+      "Django",
       "Eloquent ORM",
       "RESTful API Development",
       "Authentication",
@@ -84,9 +85,9 @@ export const experience = [
     title: "Web Developer (Project Basis) — Data Monitoring Tool (DMT-LGU)",
     company: "Department of Information and Communications Technology (DICT)",
     duration: "September 23, 2024 – May 2026",
-    stack: ["Laravel", "React", "JavaScript", "RESTful APIs"],
+    stack: ["Python", "Django", "React", "JavaScript", "RESTful APIs"],
     responsibilities: [
-      "Developed and implemented the backend and frontend features using Laravel and JavaScript.",
+      "Developed and implemented the backend and frontend features using Django and JavaScript.",
       "Designed and implemented the database schema for reports and monitoring data.",
       "Developed RESTful APIs for data retrieval, filters, and reporting.",
       "Implemented dashboards, charts, and data visualizations.",
@@ -96,7 +97,7 @@ export const experience = [
       "Documented technical processes and workflows to support ongoing system maintenance.",
     ],
     achievements: [
-      "Delivered a reliable, Laravel and React platform now used by DICT to monitor eLGU systems nationwide, improving data visibility and reporting efficiency.",
+      "Delivered a reliable, Python Django and React platform now used by DICT to monitor eLGU systems nationwide, improving data visibility and reporting efficiency.",
     ],
   },
 ]
@@ -295,7 +296,7 @@ export const certifications = [
 
 export const heroBio = {
   intro:
-    "I am Ryan Jay Reyes, an Information Systems Analyst and web developer from the Philippines. I work at DICT Region 10, where I led end-to-end development of the Data Monitoring Tool (DMT-LGU), a Laravel and React platform now used by DICT to monitor eLGU systems nationwide. Outside of my day job, I build my career as a freelance full-stack web developer.",
+    "I am Ryan Jay Reyes, an Information Systems Analyst and web developer from the Philippines. I work at DICT Region 10, where I led end-to-end development of the Data Monitoring Tool (DMT-LGU), a Python Django and React platform now used by DICT to monitor eLGU systems nationwide. Outside of my day job, I build my career as a freelance full-stack web developer. I am open to remote, part-time, and full-time work, as long as it does not conflict with my regular 8 AM - 5 PM schedule.",
   techStackHeading: "My primary tech stack includes:",
   techStack: [
     "React + Vite + TypeScript",
@@ -318,13 +319,6 @@ export const heroBio = {
     "I enjoy solving real-world problems through software and building systems that make processes more efficient. I am committed to continuous learning and growth, both in my government role and as a freelance developer.",
   ],
 }
-
-export const hobbies = [
-  { emoji: "⛪", label: "Serving and participating in church activities" },
-  { emoji: "🎵", label: "Listening to music and creating playlists" },
-  { emoji: "🌐", label: "Working on personal and freelance software projects" },
-  { emoji: "🛵", label: "Riding my motorcycle and exploring new places" },
-]
 
 export const services = [
   {

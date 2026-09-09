@@ -1,36 +1,17 @@
-import { 
-  Code2, 
-  Database, 
-  Globe2, 
-  HeartHandshake, 
-  LayoutTemplate, 
-  MapPin, 
-  Server, 
-  Sparkles, 
-  Wrench, 
-  Camera 
+import {
+  Code2,
+  Database,
+  Globe2,
+  LayoutTemplate,
+  MapPin,
+  Server,
+  Sparkles,
+  Wrench
 } from "lucide-react"
 import { useResume } from "@/context/ResumeContext"
-import { Reveal } from "@/components/Reveal"
-import { hobbies } from "@/data/resume"
 import graduationPhoto from "@/assets/photos/profile-graduation.jpg"
 import deskPhoto1 from "@/assets/photos/profile-desk-1.png"
 import deskPhoto2 from "@/assets/photos/profile-desk-2.png"
-import hobbyCinema from "@/assets/photos/hobby-cinema.jpg"
-import hobbyVintageCar from "@/assets/photos/hobby-vintage-car.jpg"
-import hobbyArch from "@/assets/photos/hobby-arch.jpg"
-import hobbySantorini from "@/assets/photos/hobby-santorini.jpg"
-import hobbyBalloons from "@/assets/photos/hobby-balloons.jpg"
-import hobbyMountains from "@/assets/photos/hobby-mountains.jpg"
-
-const galleryPhotos = [
-  { src: hobbySantorini, alt: "Ryan Jay Reyes at Santorini-themed steps", span: "sm:col-span-2 sm:row-span-2" },
-  { src: hobbyCinema, alt: "Ryan Jay Reyes at a cinema event", span: "col-span-1" },
-  { src: hobbyVintageCar, alt: "Ryan Jay Reyes beside a vintage car", span: "col-span-1" },
-  { src: hobbyArch, alt: "Ryan Jay Reyes at a scenic viewpoint", span: "col-span-1" },
-  { src: hobbyBalloons, alt: "Ryan Jay Reyes at a celebration", span: "col-span-1" },
-  { src: hobbyMountains, alt: "Ryan Jay Reyes with a mountain view", span: "col-span-1 sm:col-span-2" },
-]
 
 const categoryIcons: Record<string, typeof Code2> = {
   "Languages": Code2,
@@ -115,7 +96,7 @@ export function About() {
 
             {/* Structured Details Card */}
             {detailsList.length > 0 && (
-              <div className="rounded-2xl border border-border/60 bg-card/40 p-5 shadow-xs backdrop-blur-md transition-colors hover:border-primary/30">
+              <div className="rounded-2xl border border-border/60 p-5 shadow-xs transition-colors hover:border-primary/30">
                 <dl className="grid grid-cols-2 gap-4 text-sm">
                   {detailsList.map((d) => (
                     <div key={d.label} className="space-y-1">
@@ -151,7 +132,7 @@ export function About() {
           {/* Col 3: Skills & Tech Stack Box */}
           <div
             id="skills"
-            className="space-y-6 rounded-3xl border border-border/60 bg-card/40 p-6 sm:p-7 shadow-sm backdrop-blur-md md:col-span-2 lg:col-span-1"
+            className="space-y-6 rounded-3xl border border-border/60 p-6 sm:p-7 shadow-sm md:col-span-2 lg:col-span-1"
           >
             <div>
               <h3 className="font-heading text-lg font-bold tracking-tight text-foreground">
@@ -190,83 +171,6 @@ export function About() {
             </div>
           </div>
         </div>
-
-        {/* Beyond the code: Bento Gallery + Hobbies */}
-        {!isCustom && (
-          <div className="mt-20 border-t border-border/40 pt-16">
-            <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] items-start">
-              
-              {/* Photo Showcase */}
-              <Reveal direction="up" className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="flex items-center gap-2 font-heading text-xl font-bold tracking-tight text-foreground">
-                      <Camera className="size-5 text-primary" />
-                      Beyond the Code
-                    </h3>
-                    <p className="mt-0.5 text-xs text-muted-foreground">
-                      Memorable moments and adventures outside of programming.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-3.5">
-                  {galleryPhotos.map((photo) => (
-                    <div
-                      key={photo.src}
-                      className={`group relative overflow-hidden rounded-2xl border border-border/60 bg-muted/20 shadow-xs ${photo.span}`}
-                    >
-                      <img
-                        src={photo.src}
-                        alt={photo.alt}
-                        className="h-44 sm:h-full w-full min-h-[160px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-                      {/* Solid hover overlay for caption legibility */}
-                      <div className="absolute inset-0 bg-black/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-3">
-                        <p className="text-[11px] font-medium text-white/90 line-clamp-1">
-                          {photo.alt}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-
-              {/* Hobbies & Interests Card */}
-              <Reveal
-                direction="up"
-                className="space-y-5 rounded-3xl border border-border/60 bg-card/40 p-6 sm:p-7 shadow-xs backdrop-blur-md"
-              >
-                <div className="flex items-center gap-2">
-                  <HeartHandshake className="size-5 text-primary" />
-                  <div>
-                    <h3 className="font-heading text-lg font-bold tracking-tight text-foreground">
-                      Hobbies & Interests
-                    </h3>
-                    <p className="mt-0.5 text-xs text-muted-foreground">
-                      Activities that keep me inspired and balanced.
-                    </p>
-                  </div>
-                </div>
-
-                <ul className="space-y-2.5">
-                  {hobbies.map((hobby) => (
-                    <li
-                      key={hobby.label}
-                      className="group flex items-center gap-3.5 rounded-xl border border-transparent bg-background/30 p-3 text-sm text-muted-foreground transition-all duration-200 hover:border-border/60 hover:bg-card/70 hover:text-foreground"
-                    >
-                      <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border/40 bg-muted/40 text-lg shadow-2xs transition-transform duration-300 group-hover:scale-110">
-                        {hobby.emoji}
-                      </span>
-                      <span className="font-medium text-xs sm:text-sm">{hobby.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-
-            </div>
-          </div>
-        )}
       </div>
     </section>
   )

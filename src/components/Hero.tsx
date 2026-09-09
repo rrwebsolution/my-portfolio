@@ -1,9 +1,11 @@
-import { ArrowRight, Code2, FileText, FolderGit2, Mail, Sparkles } from "lucide-react"
+import { useState } from "react"
+import { ArrowRight, Code2, FileText, FolderGit2, Mail, Sparkles, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CvUploadDialog } from "@/components/CvUploadDialog"
 import { useResume } from "@/context/ResumeContext"
 import { heroBio, portfolioStats } from "@/data/resume"
-import profilePhoto from "@/assets/photos/profile-formal.jpg"
+
+const profilePhoto = "/profile_photo.jpg"
 
 const heroTechBadges = [
   "Laravel",
@@ -19,6 +21,7 @@ const heroTechBadges = [
 export function Hero() {
   const { data, isCustom } = useResume()
   const { profile } = data
+  const [previewOpen, setPreviewOpen] = useState(false)
 
   const initials = profile.name
     .split(" ")
@@ -30,9 +33,8 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative mx-auto flex max-w-6xl flex-col items-center gap-9 overflow-hidden rounded-[2rem] border border-border/70 bg-card/75 px-5 py-14 text-center shadow-xl shadow-black/5 backdrop-blur-xl sm:px-10 sm:py-20 lg:px-16"
+      className="relative mx-auto flex max-w-6xl flex-col items-center gap-9 px-5 py-14 text-center sm:px-10 sm:py-20 lg:px-16"
     >
-      <div className="absolute inset-x-0 top-0 h-1.5 bg-primary" />
       {/* 1. AVATAR WITH LUMINOUS GLOW RING & STATUS BADGE */}
       <div className="relative group">
         {/* Animated ambient back-glow */}
@@ -45,11 +47,18 @@ export function Hero() {
               {initials}
             </div>
           ) : (
-            <img
-              src={profilePhoto}
-              alt={profile.name}
-              className="size-32 sm:size-36 rounded-full object-cover object-top ring-2 ring-background shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-            />
+            <button
+              type="button"
+              onClick={() => setPreviewOpen(true)}
+              aria-label={`Preview photo of ${profile.name}`}
+              className="block cursor-zoom-in"
+            >
+              <img
+                src={profilePhoto}
+                alt={profile.name}
+                className="size-32 sm:size-36 rounded-full object-cover object-top ring-2 ring-background shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+            </button>
           )}
         </div>
 
@@ -97,9 +106,9 @@ export function Hero() {
               {heroBio.intro}
             </p>
 
-            {/* Structured Glass Card for Skills & Highlights */}
-            <div className="rounded-2xl border border-border/80 bg-background/85 p-5 text-left shadow-sm sm:p-7 space-y-5">
-              
+            {/* Skills & Highlights */}
+            <div className="text-left space-y-5">
+
               {/* Tech Stack Chips */}
               <div>
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground mb-2.5">
@@ -216,7 +225,7 @@ export function Hero() {
         {heroTechBadges.map((tech) => (
           <span
             key={tech}
-            className="inline-flex items-center rounded-full border border-border/60 bg-card/40 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur-xs"
+            className="inline-flex items-center rounded-full border border-border/60 px-3 py-1 text-xs font-medium text-muted-foreground"
           >
             {tech}
           </span>
@@ -224,6 +233,31 @@ export function Hero() {
       </div>
 
       <CvUploadDialog />
+
+      {previewOpen && !isCustom && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center px-4"
+          onClick={() => setPreviewOpen(false)}
+        >
+          <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
+
+          <button
+            type="button"
+            onClick={() => setPreviewOpen(false)}
+            aria-label="Close preview"
+            className="absolute top-5 right-5 z-10 rounded-full border border-border/60 bg-background/80 p-2 text-foreground transition-colors hover:bg-muted"
+          >
+            <X className="size-5" />
+          </button>
+
+          <img
+            src={profilePhoto}
+            alt={profile.name}
+            className="relative max-h-[85vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   )
 }
