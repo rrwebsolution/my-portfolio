@@ -9,7 +9,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ryan-an-reyes-a45a9a277",
   facebook: "https://www.facebook.com/ryanjaytagolimotreyes",
   portfolio: "https://my-portfolio.online/",
-  resumeUrl: "/Ryan_Jay_Reyes_Resume.pdf",
+  resumeUrl: "/Ryan_Jay_Reyes_myResume.pdf",
   languages: ["English", "Tagalog", "Bisaya"],
 }
 
